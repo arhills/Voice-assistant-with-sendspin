@@ -724,18 +724,10 @@ script:
 
 external_components:
   - source:
-      # https://github.com/esphome/esphome/pull/12429
       type: git
-      url: https://github.com/kahrendt/esphome
-      ref: 890e33f99af2c2ea15dc74c3ec4cf32d25203526
-    components: [const, media_source, sendspin]
-  - source:
-      # https://github.com/esphome/esphome/pull/12429
-      type: git
-      url: https://github.com/esphome/esphome
-      ref: ff8ce89556748509d7ee8724e12d9d43d3c8c1e8
-    refresh: 0s
-    components: [http_request]
+      url: https://www.github.com/esphome/esphome
+      ref: dev
+    components: [sendspin]
 
 sendspin:
   id: sendspin_hub
@@ -801,10 +793,10 @@ speaker:
 media_source:
   - platform: audio_file
     id: audio_file_announcement_source
-  - platform: http_request
+  - platform: audio_http
     id: http_announcement_source
     buffer_size: 250000
-  - platform: http_request
+  - platform: audio_http
     id: http_media_source
     buffer_size: 500000
 
@@ -886,10 +878,7 @@ media_player:
         then:
         - light.turn_off:
             id: led_internal  
-
-http_request:
-  buffer_size_rx: 2048  # Reduces CPU load when streaming audio
-
+            
 audio_file:
 
       - id: center_button_press_sound
