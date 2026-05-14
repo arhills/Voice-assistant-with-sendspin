@@ -721,14 +721,7 @@ script:
           event: esphome.stt_text
           data:
             text: !lambda return stt_text;
-
-external_components:
-  - source:
-      type: git
-      url: https://www.github.com/esphome/esphome
-      ref: dev
-    components: [sendspin]
-
+            
 sendspin:
   id: sendspin_hub
 
