@@ -29,9 +29,6 @@
 #  Mic
 #  Speaker
 
-packages:
-  va: !include common/voice-assist.yaml
-
 substitutions:
   # Phases of the Voice Assistant
   # The voice assistant is ready to be triggered by a wake word
