@@ -718,9 +718,10 @@ script:
           event: esphome.stt_text
           data:
             text: !lambda return stt_text;
-            
+
 sendspin:
   id: sendspin_hub
+  task_stack_in_psram: true
 
 i2s_audio:
   - id: i2s_output
@@ -750,7 +751,7 @@ speaker:
  #   i2s_mode: secondary
     i2s_dout_pin:   
       number: ${spk}
-    bits_per_sample: 32bit
+    bits_per_sample: 16bit
     i2s_audio_id: i2s_output
     dac_type: external
     channel: stereo
@@ -762,6 +763,7 @@ speaker:
     id: mixing_speaker
     output_speaker: i2s_audio_speaker
     num_channels: 1
+    task_stack_in_psram: true
     source_speakers:
       - id: announcement_mixing_input
         timeout: never
@@ -868,7 +870,7 @@ media_player:
         then:
         - light.turn_off:
             id: led_internal  
-            
+
 audio_file:
 
       - id: center_button_press_sound
@@ -1121,4 +1123,3 @@ button:
     entity_category: config
     disabled_by_default: false
     icon: "mdi:restart"
-
